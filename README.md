@@ -65,11 +65,11 @@ The dataset includes individuals categorized by gender: Female, Male, NA (Not Av
 
 The raw numbers indicate the following:
 
-** Females:**
+**Females:**
 -	132 individuals had a stroke.
 -	2985 individuals did not have a stroke.
 
-** Males:**
+**Males:**
 -	106 individuals had a stroke.
 -	2113 individuals did not have a stroke.
 
