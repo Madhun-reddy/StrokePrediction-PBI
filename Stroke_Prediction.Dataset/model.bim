@@ -1,0 +1,649 @@
+{
+  "compatibilityLevel": 1567,
+  "model": {
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"General_Details_table\",\"Risk_Factors_Table\",\"All_measures\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.126.927.0 (24.02)"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "en-IN",
+    "cultures": [
+      {
+        "name": "en-IN",
+        "linguisticMetadata": {
+          "content": {
+            "DynamicImprovement": "HighConfidence",
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "relationships": [
+      {
+        "name": "9effb504-2010-4ffb-a567-d00ba7d49e20",
+        "crossFilteringBehavior": "bothDirections",
+        "fromCardinality": "one",
+        "fromColumn": "id",
+        "fromTable": "General_Details_table",
+        "toColumn": "Patient_id",
+        "toTable": "Risk_Factors_Table"
+      }
+    ],
+    "sourceQueryCulture": "en-IN",
+    "tables": [
+      {
+        "name": "General_Details_table",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ],
+        "columns": [
+          {
+            "name": "id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "c1e98506-f611-4d1e-9775-f3da6162506b",
+            "sourceColumn": "id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "gender",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1d189273-492e-48b3-968e-11cd65596997",
+            "sourceColumn": "gender",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "age",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "DataType"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "90da4bc1-decf-4c66-8afc-9e764e2e432d",
+            "sourceColumn": "age",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ever_married",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "06d28561-ddec-453e-af41-f57b2f886a23",
+            "sourceColumn": "ever_married",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Residence_type",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "00c42cda-fd9f-4040-b599-6997a6a6f689",
+            "sourceColumn": "Residence_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "work_type_Cleaned1",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "159687ec-45aa-418a-8aa0-b16248a52d94",
+            "sourceColumn": "work_type_Cleaned1",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Age_high_risk",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "expression": "if(General_Details_table[age]>55, \"High Risk Age\", \"Low Risk Age\")",
+            "isDataTypeInferred": true,
+            "lineageTag": "f1f49975-217f-4c8b-9283-653e69f70f1e",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "High_Risk_Factor2",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "expression": [
+              "if(",
+              "                     (General_Details_table[gender]=\"Male\" && RELATED(Risk_Factors_Table[heart_disease])=1),",
+              "                     \"High Risk2\",",
+              "                     \"Low Risk2\"",
+              "                    )",
+              "                    "
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "7dba097f-e0e6-4998-a1f0-ed47fce8181a",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "lineageTag": "bf96a757-7030-40d0-b15b-e313169073e9",
+        "partitions": [
+          {
+            "name": "General_Details_table-662420e5-96fa-46e1-bdfa-d18bab5dbe83",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(\"D:\\Projects\\StrokePredictionData\\healthcare_dataset_stroke_data_v1.xlsx\"), null, true),",
+                "    General_Details_table_DefinedName = Source{[Item=\"General_Details_table\",Kind=\"DefinedName\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(General_Details_table_DefinedName, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"id\", Int64.Type}, {\"gender\", type text}, {\"age\", type number}, {\"ever_married\", type text}, {\"work_type\", type text}, {\"Residence_type\", type text}}),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Changed Type\", each true),",
+                "    Gender_Transformation = Table.ReplaceValue(#\"Filtered Rows\",null,\"NA\",Replacer.ReplaceValue,{\"gender\"}),",
+                "    Age_Trasnformation = Table.ReplaceValue(Gender_Transformation,null,List.Average(Gender_Transformation[age]),Replacer.ReplaceValue,{\"age\"}),",
+                "    Ever_married_Transformation = Table.ReplaceValue(Age_Trasnformation,null,\"NA\",Replacer.ReplaceValue,{\"ever_married\"}),",
+                "    #\"Duplicated Worktype\" = Table.DuplicateColumn(Ever_married_Transformation, \"work_type\", \"work_type - Copy\"),",
+                "    #\"Split WorkType by Positions\" = Table.SplitColumn(#\"Duplicated Worktype\", \"work_type\", Splitter.SplitTextByPositions({0, 4}), {\"work_type.1\", \"work_type.2\"}),",
+                "    #\"Format Worktype\" = Table.TransformColumnTypes(#\"Split WorkType by Positions\",{{\"work_type.1\", type text}, {\"work_type.2\", type text}}),",
+                "    #\"Renamed WorkType Cleaned\" = Table.RenameColumns(#\"Format Worktype\",{{\"work_type.2\", \"work_type_Cleaned1\"}}),",
+                "    #\"Removed WT in worktype\" = Table.RemoveColumns(#\"Renamed WorkType Cleaned\",{\"work_type.1\"}),",
+                "    Work_type_cleaning_method2 = Table.AddColumn(#\"Removed WT in worktype\", \"Text After Delimiter\", each Text.AfterDelimiter([#\"work_type - Copy\"], \"-\"), type text),",
+                "    #\"Renamed Work_type_Cleaned2\" = Table.RenameColumns(Work_type_cleaning_method2,{{\"Text After Delimiter\", \"Work_type_Cleaned2\"}}),",
+                "    Further_Cleaned_Work_type = Table.ReplaceValue(#\"Renamed Work_type_Cleaned2\",\"\",\"NA\",Replacer.ReplaceValue,{\"work_type_Cleaned1\"}),",
+                "    Cleaned_Residence_type = Table.ReplaceValue(Further_Cleaned_Work_type,null,\"NA\",Replacer.ReplaceValue,{\"Residence_type\"}),",
+                "    #\"Removed Extra Columns\" = Table.RemoveColumns(Cleaned_Residence_type,{\"work_type - Copy\", \"Work_type_Cleaned2\"})",
+                "in",
+                "    #\"Removed Extra Columns\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DateTableTemplate_417191dd-2340-4b5a-80f0-c7b59f9ee1d9",
+        "annotations": [
+          {
+            "name": "__PBI_TemplateDateTable",
+            "value": "true"
+          },
+          {
+            "name": "DefaultItem",
+            "value": "DateHierarchy"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "7c5eafa4-ceda-4681-bf9d-0625d400717a",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "2ca148e9-465a-4e3a-8489-ef5e37154773",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "b2c6a4eb-22e7-42d7-ac1b-f7c8cefaa753",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "c8062204-f855-48fc-9251-3d2860ca57a6",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "1d45674d-570f-4946-9964-0ae69cba78bd",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "8825080f-3646-45eb-965d-83a4580a4150",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "f56b7b3c-d846-42a5-9f1a-5f7f387b7ab8",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "86e3a894-b654-432d-ae8c-9f2c4242adf2",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "b8651ddd-4055-4718-9667-17b9c331dd44",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "91ca29d3-ace3-43a2-9591-6f0da5e074aa",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "8be1b15f-8c1a-4ff5-8e9c-a2b62d5bb627",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "7be0c786-6805-4a21-8805-b9569094e6e9"
+          }
+        ],
+        "isHidden": true,
+        "isPrivate": true,
+        "lineageTag": "8628c1b0-4c62-4c31-bd65-09d66904a680",
+        "partitions": [
+          {
+            "name": "DateTableTemplate_417191dd-2340-4b5a-80f0-c7b59f9ee1d9-a856c662-cc2f-44d0-83ba-fe919b52a98f",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(2015,1,1), Date(2015,1,1))",
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Risk_Factors_Table",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Patient_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "acf7a9f0-e7aa-4dd3-a7fd-7845de6df43d",
+            "sourceColumn": "Patient_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "hypertension",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "dcf39d00-449c-452e-bece-43dc71bf9c5b",
+            "sourceColumn": "hypertension",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "heart_disease",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "2062a744-4ed5-40c2-a652-b093b768bb22",
+            "sourceColumn": "heart_disease",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "avg_glucose_level",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "1ab863c5-c8c2-411b-af88-a05c81711a31",
+            "sourceColumn": "avg_glucose_level",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "bmi",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "31216291-58c4-46a8-bf27-cd279db49101",
+            "sourceColumn": "bmi",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "smoking_status",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c56f724c-3f59-4b10-b617-88a2e8eb7ac2",
+            "sourceColumn": "smoking_status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "stroke",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "2e7f4163-da01-4444-9a03-ce7e835bc212",
+            "sourceColumn": "stroke",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "f74066b3-c01c-4f75-913e-f87686d1e5aa",
+        "partitions": [
+          {
+            "name": "Risk_Factors_Table-fc591c4a-66ec-42d5-8733-73cf90d4f1e5",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(\"D:\\Projects\\StrokePredictionData\\healthcare_dataset_stroke_data_v1.xlsx\"), null, true),",
+                "    Risk_Factors_Table_DefinedName = Source{[Item=\"Risk_Factors_Table\",Kind=\"DefinedName\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Risk_Factors_Table_DefinedName, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Patient_id\", Int64.Type}, {\"hypertension\", Int64.Type}, {\"heart_disease\", Int64.Type}, {\"avg_glucose_level\", type number}, {\"bmi\", type any}, {\"smoking_status\", type text}, {\"stroke\", Int64.Type}}),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Changed Type\", each true),",
+                "    #\"Converted bmi to numeric\" = Table.TransformColumnTypes(#\"Filtered Rows\",{{\"bmi\", type number}}),",
+                "    #\"Replaced Errors with nulls in bmi\" = Table.ReplaceErrorValues(#\"Converted bmi to numeric\", {{\"bmi\", null}}),",
+                "    #\"Replaced nulls with average bmi\" = Table.ReplaceValue(#\"Replaced Errors with nulls in bmi\",null, List.Average(#\"Replaced Errors with nulls in bmi\"[bmi]),Replacer.ReplaceValue,{\"bmi\"}),",
+                "    smoking_status_Celaning = Table.ReplaceValue(#\"Replaced nulls with average bmi\",null,\"Unknown\",Replacer.ReplaceValue,{\"smoking_status\"})",
+                "in",
+                "    smoking_status_Celaning"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "All_measures",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ],
+        "lineageTag": "f7b2b689-d636-4f12-9a2d-f03197634f3e",
+        "measures": [
+          {
+            "name": "Average_age",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "AVERAGE(General_Details_table[age])",
+            "lineageTag": "fcd54484-4ff5-40bf-9442-2f68e7f075c8"
+          },
+          {
+            "name": "Stroke_rate",
+            "changedProperties": [
+              {
+                "property": "FormatString"
+              }
+            ],
+            "expression": "sum(Risk_Factors_Table[stroke])/count(Risk_Factors_Table[stroke])",
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "b9b158a7-0f10-4fe8-a870-0aa71303591e"
+          },
+          {
+            "name": "percent_of_total",
+            "changedProperties": [
+              {
+                "property": "FormatString"
+              }
+            ],
+            "expression": "count(General_Details_table[id])/COUNTROWS(all(General_Details_table[id]))",
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "a1e9075a-278d-48f7-bc6c-5c95708fed0b"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "All_measures-39b49f0c-b202-485a-828d-771de711a048",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i44FAA==\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Changed Type\",{\"Column1\"})",
+                "in",
+                "    #\"Removed Columns\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
