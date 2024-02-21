@@ -1,6 +1,10 @@
 # StrokePrediction-PBI
 
+## Univariate Analysis
+Univariate analysis focuses on analyzing one variable at a time. Let’s explore the insights from a univariate perspective based on the provided data
+
 ## Bivariate Analysis
+Bivariate analysis focuses on analyzing any concurrent relation between two variables or attributes. Let’s explore the insights from a bivariate perspective based on the provided data
 
 ### Stroke occurrences based on Age high risk group(individual age >55 group as high risk):
 
