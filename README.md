@@ -71,6 +71,17 @@ The raw numbers indicate the following:
   -  54 individuals did not have a stroke.
   -  64 individuals had a stroke.
 
+
+## Insights:
+1.	The high-risk age segment faces a significantly higher risk of stroke.
+2.	Organizations and healthcare providers should focus on preventive measures and early detection for this demographic.
+3.	Lifestyle modifications, regular health check-ups, and awareness campaigns can help mitigate stroke risk.
+4.	Marital status appears to be associated with stroke risk.
+5.	Individuals who are currently married have over 81% higher likelihood of experiencing a stroke compared to those who are never married is 10%.
+6.	Females have a slightly higher likelihood of experiencing a stroke compared to males.
+7.	Job type may play a role in stroke prediction. So individuals in private jobs  had over 58% and those who are self-employed had 26% stroke and appear to have a slightly higher likelihood of experiencing a stroke in these categories of workers.
+
+
 ## Category vs Target Analysis
 Let’s analyze the insights and recommendations based on different categories compared to the target:
 
@@ -124,14 +135,6 @@ Let’s analyze the insights and recommendations based on different categories c
 
 **Recommendation:** Control blood pressure effectively.
 
-## Insights:
-1.	The high-risk age segment faces a significantly higher risk of stroke.
-2.	Organizations and healthcare providers should focus on preventive measures and early detection for this demographic.
-3.	Lifestyle modifications, regular health check-ups, and awareness campaigns can help mitigate stroke risk.
-4.	Marital status appears to be associated with stroke risk.
-5.	Individuals who are currently married have over 81% higher likelihood of experiencing a stroke compared to those who are never married is 10%.
-6.	Females have a slightly higher likelihood of experiencing a stroke compared to males.
-7.	Job type may play a role in stroke prediction. So individuals in private jobs  had over 58% and those who are self-employed had 26% stroke and appear to have a slightly higher likelihood of experiencing a stroke in these categories of workers.
 
 ## Continuous vs Target Analysis
 
