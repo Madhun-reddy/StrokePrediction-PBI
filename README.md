@@ -1,6 +1,9 @@
-# Stroke Prediction
+# Stroke Prediction using Power BI
 According to the World Health Organization (WHO) stroke is the 2nd leading cause of death globally, responsible for approximately 11% of total deaths.
 This dataset is used to predict whether a patient is likely to get stroke based on the input parameters like gender, age, various diseases, and smoking status. Each row in the data provides relavant information about the patient.
+
+## Dataset
+The dataset used in this project consists of 5110 observations with 12 attributes, including information on demographics, medical history, lifestyle factors, and stroke occurrence. The dataset was carefully prepared and explored, including handling missing values, performing descriptive statistics, and visualizing the data distribution.
 
 ## Descriptor Information
 1) id: unique identifier
