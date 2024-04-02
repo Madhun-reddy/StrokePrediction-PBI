@@ -2,7 +2,7 @@
 According to the World Health Organization (WHO) stroke is the 2nd leading cause of death globally, responsible for approximately 11% of total deaths.
 This dataset is used to predict whether a patient is likely to get stroke based on the input parameters like gender, age, various diseases, and smoking status. Each row in the data provides relavant information about the patient.
 
-## Attribute Information
+## Descriptor Information
 1) id: unique identifier
 2) gender: "Male", "Female" or "Other"
 3) age: age of the patient
@@ -16,6 +16,9 @@ This dataset is used to predict whether a patient is likely to get stroke based 
 11) smoking_status: "formerly smoked", "never smoked", "smokes" or "Unknown"*
 12) stroke: 1 if the patient had a stroke or 0 if not
 *Note: "Unknown" in smoking_status means that the information is unavailable for this patient
+
+## Data Preparation and Exploration
+The data preprocessing phase involved removing unnecessary columns, addressing missing values, categorizing features, and standardizing the data. Exploratory data analysis was conducted to gain insights into the dataset, including visualizations of categorical and numerical columns, identifying outliers, and examining correlations among variables.
 
 ## Univariate Analysis
 Univariate analysis focuses on analyzing one variable at a time. Let’s explore the insights from a univariate perspective based on the provided data
@@ -164,3 +167,8 @@ Let’s analyze the insights and recommendations based on different categories c
 -	Age: Focus preventive measures on older adults as they are at higher risk.
 -	BMI: Monitor and manage BMI to mitigate stroke risk.
 -	Glucose Level: Control blood glucose levels effectively.
+
+## Conclusion and Recommendations
+The results demonstrated that our models achieved high recall for stroke cases despite the imbalanced nature of the dataset. Age was found to be a significant predictor, along with other features such as smoking status and work type. The developed model can serve as a valuable tool in identifying individuals at risk of stroke and implementing preventive interventions.
+
+Further analysis and exploration are recommended to delve deeper into genetic factors, long-term effects of lifestyle modifications, advanced predictive models, socioeconomic and cultural factors, novel biomarkers, imaging techniques, and personalized stroke prevention strategies.
